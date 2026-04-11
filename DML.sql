@@ -8,3 +8,61 @@ VALUES
 		(8, 'ISMA', 'TURKIYE', NULL)
 
 SELECT * FROM customers
+
+
+-- INSERT DATA USING TARGET 
+
+-- COPY DATA FROM 'CUSTOMERS' TABLE INTO 'PERSONS' TABLE	
+
+
+INSERT INTO persons (id, person_name, birth_date, phone)
+SELECT 
+	id,
+	first_name,
+	NULL,
+	'UNKNOWN'
+FROM customers
+
+SELECT * FROM persons
+
+
+
+-- [UPDATE]
+
+-- CHANGE THE SCORE OF CUSTOMER WITH ID 6 TO 1
+
+UPDATE persons
+SET phone = '9120671586'
+WHERE id = 7
+
+-- CHANGE THE SCORE OF CUSTOMER WITH ID 8 TO 0 AND UPDATE THE COUNTRY TO UK
+
+UPDATE customers
+SET score = NULL
+WHERE id = 3
+
+
+-- UPDATE ALL CUSTOMERS WITH A NULL SCORE BY SETTING THEIR SCORE TO 0
+
+UPDATE customers 
+SET score = 0
+WHERE score IS NULL
+ 
+
+
+-- [DELETE]
+
+-- DELETE ALL CUSTOMERS WITH AN ID > 5
+
+DELETE FROM customers
+WHERE id > 4
+
+SELECT * FROM customers
+WHERE id > 4
+
+
+-- DELETE ALL DATA FROM PERSONS TABLE
+
+TRUNCATE TABLE persons
+
+SELECT * FROM persons
