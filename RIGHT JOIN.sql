@@ -1,0 +1,31 @@
+-- RETURN ALL ROWS FROM RIGHT AND ONLY MATCHING FROM LEFT
+
+-- GET ALL CUSTOMERS ALONG WITH THEIR ORDERS INCLUDING ORDERS WITHOUT MATCHING CUSTOMERS
+
+SELECT 
+	C.id,
+	C.first_name,
+	O.order_id,
+	O.sales
+
+FROM customers AS C
+RIGHT JOIN orders AS O
+ON C.id = O.customer_id
+
+
+-- GET ALL CUSTOMERS ALONG WITH THEIR ORDERS, INCLUDING ORDERS WITHOUT MATCHING CUSTOMERS (USING LEFT JOIN)
+
+SELECT 
+	C.id,
+	C.first_name,
+	O.order_id,
+	O.sales
+FROM orders AS O
+LEFT JOIN customers AS C
+ON C.id = O.customer_id
+
+SELECT *
+FROM customers
+
+SELECT *
+FROM orders
