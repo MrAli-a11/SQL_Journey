@@ -1,0 +1,42 @@
+-- MULTI TABLE JOINING
+
+/* USING SalesDB, RETRIEVE A LIST OF ALL ORDERS, ALONG WITH THE RELATED CUSTOMER, PRODUCT, AND EMPLOYEE DETAILS
+FOR EACH ORDER, DISPLAY:
+	- ORDER ID,
+	- CUSTOMER'S NAME,
+	- PRODUCT NAME,
+	- SALES AMOUNT,
+	- PRODUCT PRICE,
+	- SALESPERSON'S NAME
+*/
+
+SELECT 
+	O.OrderID,
+	C.FirstName AS [CUSTOMER FIRST NAME],
+	C.LastName AS [CUSTOMER LAST NAME],
+	P.Product AS [PRODUCT NAME],
+	O.Sales,
+	P.Price,
+	E.FirstName AS [EMPLOYEE FIRST NAME]
+FROM Sales.Orders AS O
+LEFT JOIN Sales.Customers AS C
+ON O.CustomerID = C.CustomerID
+LEFT JOIN Sales.Products AS P
+ON O.ProductID = P.ProductID
+LEFT JOIN Sales.Employees AS E
+ON O.SalesPersonID = E.EmployeeID
+
+SELECT *
+FROM Sales.Orders
+
+SELECT *
+FROM Sales.Customers
+
+SELECT *
+FROM Sales.Products
+
+SELECT *
+FROM SALES.Employees
+
+SELECT *
+FROM Sales.OrdersArchive

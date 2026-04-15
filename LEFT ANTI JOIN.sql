@@ -14,8 +14,15 @@ ON C.id = O.customer_id
 WHERE O.customer_id IS NULL
 
 
-SELECT *
-FROM customers
+-- GE ALL CUSTOMERS ALONG WITH THEIR ORDERS, BUT ONLY FOR CUSTOMERS WHO HAVE PLACED AN ORDERS WITHOUT USING INNER JOIN
 
-SELECT * 
-FROM orders
+
+SELECT 
+	C.id,
+	C.first_name,
+	O.order_id,
+	O.sales
+FROM customers AS C
+LEFT JOIN orders AS O
+ON O.customer_id = C.id
+WHERE O.customer_id IS NOT NULL
