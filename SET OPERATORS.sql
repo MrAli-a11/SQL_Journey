@@ -46,3 +46,42 @@ SELECT
 	LastName
 FROM Sales.Customers
 
+
+-- ORDERS DATA ARE STORED IN SEPARATE TABLES (ORDERS AND ORDER ARCHIEVE) COMBINE ALL ORDERS DATA IN ONE REPORT WITHOUT DUPLICATES
+
+SELECT 
+'Orders' AS SOURCE_TABLE,
+	[OrderID]
+,[ProductID]
+,[CustomerID]
+,[SalesPersonID]
+,[OrderDate]
+,[ShipDate]
+,[OrderStatus]
+,[ShipAddress]
+,[BillAddress]
+,[Quantity]
+,[Sales]
+,[CreationTime]
+FROM Sales.Orders
+
+
+UNION
+
+SELECT 
+'OrdersARCHIEVE' AS SOURCE_TABLE,
+	[OrderID]
+,[ProductID]
+,[CustomerID]
+,[SalesPersonID]
+,[OrderDate]
+,[ShipDate]
+,[OrderStatus]
+,[ShipAddress]
+,[BillAddress]
+,[Quantity]
+,[Sales]
+,[CreationTime]
+FROM Sales.OrdersArchive
+ORDER BY OrderID
+
