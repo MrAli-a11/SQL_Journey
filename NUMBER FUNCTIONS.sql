@@ -1,0 +1,13 @@
+-- ROUND
+
+SELECT 
+	342.516,
+	ROUND(342.516, 2) AS ROUND_NUM
+
+
+-- ABS
+
+SELECT	
+	-10,
+	ABS(-10),
+	ABS(10)

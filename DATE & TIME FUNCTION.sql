@@ -1,0 +1,79 @@
+-- DATE & TIME
+
+SELECT 
+	OrderID,
+	OrderDate,
+	ShipDate,
+	CreationTime, 
+	GETDATE()  TODAY
+FROM Sales.Orders
+
+
+-- PART EXTRACTION
+
+SELECT 
+	OrderID,
+	CreationTime,
+	YEAR(CreationTime) + 1 AS YEAR,
+	MONTH(CreationTime) AS MONTH,
+	DAY(CreationTime) AS DAY
+FROM Sales.Orders
+
+
+
+-- DATEPART (RETURN A SPECIFIC PART OF A DATE AS A NUMBER)
+
+SELECT 
+	OrderID,
+	CreationTime,
+	YEAR(CreationTime) + 1 AS YEAR,
+	DATEPART(MONTH, CreationTime) AS EXTRACTED_MONTH,
+	DATEPART(YEAR, CreationTime) AS EXTRACTED_YEAR,
+	DATEPART(DAY, CreationTime) AS EXTRACTED_DAY,
+	DATEPART(HOUR, CreationTime) AS EXTRACTED_HOUR,
+	DATEPART(QUARTER, CreationTime) AS EXTRACTED_QUARTER,
+	DATEPART(WEEKDAY, CreationTime) AS EXTRACTED_WEEKDAY,
+	DATEPART(WEEK, CreationTime) AS EXTRACTED_WEEK
+FROM Sales.Orders
+
+
+
+-- DATENAME (RETURN A SPECIFIC PART OF A DATE IN A STRING VALUE)
+
+SELECT
+	OrderID,
+	CreationTime,
+	DATENAME(MONTH, CreationTime) AS MONTH_NAME,
+	DATENAME(WEEKDAY, CreationTime) AS WEEK_DAY,
+	DATENAME(MONTH, CreationTime) AS MONTH_NAME
+FROM Sales.Orders
+
+
+
+-- DATETRUNC (TRUNCATE THE DATE TO THE SPECIFIC PART)
+
+SELECT
+	OrderID,
+	CreationTime,
+	DATETRUNC(YEAR, CreationTime) AS YEAR_DT,
+	DATETRUNC(DAY, CreationTime) AS DAY_DT,
+	DATETRUNC(MINUTE, CreationTime) AS MINUTE_DT
+FROM Sales.Orders
+
+
+SELECT
+	DATETRUNC(YEAR, CreationTime),
+	COUNT(*)
+FROM Sales.Orders
+GROUP BY DATETRUNC(YEAR, CreationTime)
+
+
+
+-- EOMONTH() (RETURN THE LAST DAY OF THE MONTH
+
+SELECT
+	OrderID,
+	CreationTime,
+	EOMONTH(CreationTime) AS EOMONTH
+FROM Sales.Orders
+
