@@ -3,7 +3,7 @@
 SELECT 
 	OrderID,
 	OrderDate,
-	ShipDate,
+	Sh	ipDate,
 	CreationTime, 
 	GETDATE()  TODAY
 FROM Sales.Orders
@@ -76,4 +76,13 @@ SELECT
 	CreationTime,
 	EOMONTH(CreationTime) AS EOMONTH
 FROM Sales.Orders
+
+
+
+-- SHOW ALL ORDERS THAT WERE PLACED DURING THE MONTH OF FEB
+
+SELECT 
+	*
+FROM Sales.Orders
+WHERE MONTH(OrderDate) = 2
 
